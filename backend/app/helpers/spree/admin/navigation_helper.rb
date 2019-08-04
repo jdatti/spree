@@ -154,7 +154,7 @@ module Spree
         options.delete(:no_text)
         if icon_name
           icon = content_tag(:span, '', class: "icon icon-#{icon_name}")
-          text.insert(0, icon + ' ')
+          text = "#{icon} #{text}"
         end
         link_to(text.html_safe, url, options)
       end
@@ -167,7 +167,7 @@ module Spree
       def button(text, icon_name = nil, button_type = 'submit', options = {})
         if icon_name
           icon = content_tag(:span, '', class: "icon icon-#{icon_name}")
-          text.insert(0, icon + ' ')
+          text = "#{icon} #{text}"
         end
         button_tag(text.html_safe, options.merge(type: button_type, class: "btn btn-primary #{options[:class]}", 'data-disable-with' => "#{Spree.t(:saving)}..."))
       end
@@ -191,7 +191,7 @@ module Spree
 
           if html_options[:icon]
             icon = content_tag(:span, '', class: "icon icon-#{html_options[:icon]}")
-            text.insert(0, icon + ' ')
+            text = "#{icon} #{text}"
           end
 
           link_to(text.html_safe, url, html_options)
